@@ -84,11 +84,11 @@ def trian_and_valid(data_config, feature_map, model_config, model_save_dir):
                 loss.backward()
                 optimizer.step()
                 
-                # 保存所预测和标签用于AUC计算
+                # 保存所预测和标签,用于后续的AUC计算
                 train_labels.extend(labels.cpu().detach().numpy())
                 train_preds.extend(outputs.cpu().detach().numpy())
 
-                # 更新进度条描述
+                # 更新进度条
                 pbar.set_postfix(loss=loss.item())
 
         # 计算训练集AUC
@@ -142,7 +142,7 @@ def trian_and_valid(data_config, feature_map, model_config, model_save_dir):
 
 
 if __name__ == '__main__':
-    set_seed(2024)
+    set_seed(2024)  # 固定随机种子，用于代码复现
 
     print("Step1: 获取配置各项配置 ...")
     data_config_path = '/Users/ctb/WorkSpace/EasyDeepRecommend/ModelZoo/WideDeep/WideDeep_torch/config/data_config.json'
