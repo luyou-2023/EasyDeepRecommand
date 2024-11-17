@@ -1,0 +1,11 @@
+{
+    "model_name": "WideDeep",
+    "model_save_dir": "/Users/ctb/WorkSpace/EasyDeepRecommend/ModelZoo/WideDeep/WideDeep_torch/checkpoints/",
+    "batch_size": 256,
+    "epoch": 10,
+    "loss": "bce",
+    "optimizer": "adam",
+    "learning_rate": 0.001,
+    "hidden_layers": [156, 128, 64, 32, 1],
+    "dropout_p": 0.0
+}
