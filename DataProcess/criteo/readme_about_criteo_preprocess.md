@@ -14,8 +14,7 @@
 
 （3）C1~C26: 表示分类型特征
 
-![Criteo数据示例](Critreo数据预处理.assets/image-20241019215056868-9345871.png)
-
+![alt text](image-20241019215056868-9345871.png)
 
 
 下面将对EasyDeepRecommand项目中的一些重点进行讲解，详情可以见：
