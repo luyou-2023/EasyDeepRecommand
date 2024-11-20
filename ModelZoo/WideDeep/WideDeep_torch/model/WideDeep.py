@@ -17,6 +17,12 @@ class Wide(nn.Module):
 
 class Deep(nn.Module):
     def __init__(self, hidden_layers, dropout_p=0.0):
+        """
+        Deep: 深度网络
+        Args:
+            hidden_layers: deep网络的隐层维度, 如[128, 64, 32]
+            dropout_p: dropout_p值. Defaults to 0.0.
+        """
         super(Deep, self).__init__()
         self.dnn = nn.ModuleList()
         for layer in list(zip(hidden_layers[:-1], hidden_layers[1:])):
@@ -25,19 +31,21 @@ class Deep(nn.Module):
         self.dropout = nn.Dropout(p=dropout_p)
 
     def forward(self, X):
+        """
+        Args:
+            X: 输入数据, shape=(batch_size, input_dim)
+        Returns:
+            res: deep网络的输出, shape=(batch_size, hidden_layers[-1])
+        """
         for linear in self.dnn:
             X = linear(X)
         res = self.dropout(X)
         return res
 
 
-# 定义模型
 class WideDeep(nn.Module):
-    def __init__(self,
-                 feature_map,
-                 model_config):
+    def __init__(self, feature_map, model_config):
         super(WideDeep, self).__init__()
-        # 基本配置
         self.numeric_feature_len = feature_map["numeric_feature_len"]
         self.categorical_feature_len = feature_map["categorical_feature_len"]
         self.sample_len = feature_map["sample_len"]
@@ -47,7 +55,6 @@ class WideDeep(nn.Module):
             self.hidden_layers = model_config["hidden_layers"]
         self.dropout_p = model_config["dropout_p"]
         
-        # 定义模型
         self.embedding_layer = CriteoFeatureEmbedding(feature_map=feature_map)
         
         self.wide = Wide(input_dim=self.numeric_feature_len)
