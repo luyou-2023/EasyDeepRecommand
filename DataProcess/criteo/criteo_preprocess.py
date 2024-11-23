@@ -12,7 +12,8 @@ import numpy as np
 class CriteoPreprocess():
     def __init__(self):
         super(CriteoPreprocess, self).__init__()
-        self.data_dir = '/Users/ctb/WorkSpace/EasyDeepRecommend/Dataset/criteo/'
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        self.data_dir = os.path.join(current_dir, '../../Dataset/criteo/')  # 通过相对路径存放文件
         self.data_path = os.path.join(self.data_dir, 'sample.csv')          # 样本路径
         self.numeric_features = ['I' + str(i) for i in range(1, 14)]        # 数值型特征    
         self.categerical_features = ['C' + str(i) for i in range(1, 27)]    # 列别型特征

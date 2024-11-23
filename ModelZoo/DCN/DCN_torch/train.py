@@ -3,8 +3,10 @@ import os
 import sys
 import torch
 import torch.nn as nn
-import torch.optim as optim
-sys.path.append('/Users/ctb/WorkSpace/EasyDeepRecommend')
+import torch.optim as optim                           
+current_dir = os.path.dirname(__file__)                                 # 获取当前脚本所在的目录
+project_root = os.path.abspath(os.path.join(current_dir, "../../.."))   # 定位项目根目录
+sys.path.append(project_root)                                           # 添加项目根目录到 sys.path
 from DeepRecommand.pytorch.dataloader.Criteo_Dataloader import CriteoDataloader
 from model.DCN import DCN
 from sklearn.metrics import roc_auc_score
