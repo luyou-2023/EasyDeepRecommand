@@ -143,23 +143,31 @@ def trian_and_valid(data_config, feature_map, model_config, model_save_dir):
 
 
 if __name__ == '__main__':
-    set_seed(2024)  # 固定随机种子，用于代码复现
-
+    set_seed(2024)                                                              # 固定随机种子，用于代码复现
+    
     print("Step1: 获取配置各项配置 ...")
-    data_config_path = '/Users/ctb/WorkSpace/EasyDeepRecommend/ModelZoo/DCN/DCN_torch/config/data_config.json'
-    model_config_path = '/Users/ctb/WorkSpace/EasyDeepRecommend/ModelZoo/DCN/DCN_torch/config/model_config.json'
+    data_config_path = os.path.join(current_dir, "config/data_config.json")     # 通过相对路径获取数据配置文件
+    model_config_path = os.path.join(current_dir, "config/model_config.json")   # 通过相对路径获取模型配置文件
     with open(data_config_path, 'r') as file:   
         data_config = json.load(file)
+
+    with open(model_config_path, 'r') as file:
+        model_config = json.load(file)
+
+    # 获取配置中的路径，和项目路径合并后重新赋值，防止因为路径导致程序出错
+    data_config['feature_map'] = project_root + data_config['feature_map']
+    data_config['train_data'] = project_root + data_config['train_data']
+    data_config['valid_data'] = project_root + data_config['valid_data']
+    data_config['test_data'] = project_root + data_config['test_data']
+    model_config['model_save_dir'] = project_root + model_config['model_save_dir']
+
     print("data_config: \n", json.dumps(data_config, indent=4))
+    print("model_config: \n", json.dumps(model_config, indent=4))
 
     feature_map_path = data_config['feature_map']
     with open(feature_map_path, 'r') as file:
         feature_map = json.load(file)
     print("feature_map: \n", json.dumps(feature_map, indent=4))
-
-    with open(model_config_path, 'r') as file:
-        model_config = json.load(file)
-    print("model_config: \n", json.dumps(model_config, indent=4))
 
     trian_and_valid(data_config=data_config,
                     feature_map=feature_map,

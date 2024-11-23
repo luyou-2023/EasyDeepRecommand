@@ -250,9 +250,11 @@ class CriteoPreprocess():
         processed_data.head(100).to_csv(output_csv, index=False)                                        # 将前100行数据保存为csv,方便查看
 
     
-    def process_all_operation(self):
+    def process_all_operation(self, dataset_save_name="process_sample.npz"):
         """
         数据处理集合
+        Args:
+            dataset_save_name: 数据集处理后的最终命名
         """
         print("Step1: 开始读取数据，并进行控制填充...")
         raw_data = self.get_data_and_null_fill()
@@ -262,7 +264,7 @@ class CriteoPreprocess():
         self.get_all_features_buckets(df=raw_data, bucket_dir=bucket_dir, numeric_threshold_value=56)
         
         print("Step3: 将原始样本值按桶/类别映射为桶序/类别序号...")
-        process_sample_path = self.data_dir + "process_sample.npz"
+        process_sample_path = self.data_dir + dataset_save_name
         process_sample_head_100_path = self.data_dir + "process_sample_head_100.csv"     # 将前100行数据保存为csv，方便查看
         self.original_data_to_bucket(df=raw_data, 
                                      bucket_dir=bucket_dir, 

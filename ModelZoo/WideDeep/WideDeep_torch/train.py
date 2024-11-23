@@ -4,7 +4,7 @@ import sys
 import torch
 import torch.nn as nn
 import torch.optim as optim
-current_dir = os.path.dirname(__file__)                                 # 获取当前脚本所在的目录
+current_dir = os.path.dirname(__file__)                                 # 获取当前文件所在的目录
 project_root = os.path.abspath(os.path.join(current_dir, "../../.."))   # 定位项目根目录
 sys.path.append(project_root)                                           # 添加项目根目录到 sys.path
 from DeepRecommand.pytorch.dataloader.Criteo_Dataloader import CriteoDataloader
@@ -134,6 +134,7 @@ def trian_and_valid(data_config, feature_map, model_config, model_save_dir):
     # 获取当前日期，并在 model_path 下创建日期目录
     current_date = datetime.now().strftime("%Y-%m-%d")
     date_dir = os.path.join(model_save_dir, current_date)
+    print("data_dir: ", date_dir)
     os.makedirs(date_dir, exist_ok=True)
 
     # 保存模型
@@ -144,23 +145,30 @@ def trian_and_valid(data_config, feature_map, model_config, model_save_dir):
 
 
 if __name__ == '__main__':
-    set_seed(2024)  # 固定随机种子，用于代码复现
-
+    set_seed(2024)                                                              # 固定随机种子，用于代码复现
+    
     print("Step1: 获取配置各项配置 ...")
-    data_config_path = '/Users/ctb/WorkSpace/EasyDeepRecommend/ModelZoo/WideDeep/WideDeep_torch/config/data_config.json'
-    model_config_path = '/Users/ctb/WorkSpace/EasyDeepRecommend/ModelZoo/WideDeep/WideDeep_torch/config/model_config.json'
+    data_config_path = os.path.join(current_dir, "config/data_config.json")     # 通过相对路径获取数据配置文件
+    model_config_path = os.path.join(current_dir, "config/model_config.json")   # 通过相对路径获取模型配置文件
     with open(data_config_path, 'r') as file:   
         data_config = json.load(file)
+    with open(model_config_path, 'r') as file:
+        model_config = json.load(file)
+
+    # 获取配置中的路径，和项目路径合并后重新赋值，防止因为路径导致程序出错
+    data_config['feature_map'] = project_root + data_config['feature_map']
+    data_config['train_data'] = project_root + data_config['train_data']
+    data_config['valid_data'] = project_root + data_config['valid_data']
+    data_config['test_data'] = project_root + data_config['test_data']
+    model_config['model_save_dir'] = project_root + model_config['model_save_dir']
+
     print("data_config: \n", json.dumps(data_config, indent=4))
+    print("model_config: \n", json.dumps(model_config, indent=4))
 
     feature_map_path = data_config['feature_map']
     with open(feature_map_path, 'r') as file:
         feature_map = json.load(file)
     print("feature_map: \n", json.dumps(feature_map, indent=4))
-
-    with open(model_config_path, 'r') as file:
-        model_config = json.load(file)
-    print("model_config: \n", json.dumps(model_config, indent=4))
 
     trian_and_valid(data_config=data_config,
                     feature_map=feature_map,
