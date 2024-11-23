@@ -65,4 +65,6 @@ cd ModelZoo/WideDeep/WideDeep_torch
 python train.py
 ```
 
-
+## 最后
+如果你觉得还不错的话，请帮忙点个star🌟吧，感谢感谢！！！
+If you think it's good, please help out with a star🌟, thank you !!!
