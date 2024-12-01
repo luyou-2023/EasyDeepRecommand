@@ -32,7 +32,10 @@ class CriteoFeatureEmbedding(nn.Module):
         for key, indecs in X.items():
             if key == "label":
                 continue
-            embeddings = self.embedding_layers[key](indecs)
+            if 'I' in key and not self.feature_map["is_numeric_bucket"]:
+                embeddings = indecs.unsqueeze(1).float()
+            else:
+                embeddings = self.embedding_layers[key](indecs)
             data_embedding.append(embeddings)
 
         concat_embedding = torch.cat(data_embedding, dim=1)
@@ -57,4 +60,3 @@ if __name__ == "__main__":
     res = CriteoFeatureEmbedding(X=X)
     print(res)
     print(res.shape)
-

@@ -90,6 +90,10 @@ class DCN(nn.Module):
         """
         super(DCN, self).__init__()
         self.input_dim = feature_map["sample_len"]
+        if model_config["hidden_layers"][0] != self.input_dim:
+            model_config["hidden_layers"].insert(0, self.input_dim)   # 因为第一个线性层的input_dim要等于样本长度
+        if model_config['hidden_layers'][-1] != 1:
+            model_config['hidden_layers'].append(1)
         self.hidden_layers = model_config['hidden_layers']
         self.num_cross_layers = model_config['num_cross_layers']
         self.dropout_p = model_config['dropout_p']

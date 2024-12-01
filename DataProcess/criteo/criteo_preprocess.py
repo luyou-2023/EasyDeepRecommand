@@ -8,17 +8,28 @@ from sklearn.impute import KNNImputer
 from sklearn.preprocessing import OrdinalEncoder
 import json
 import numpy as np
+import math
 
 class CriteoPreprocess():
-    def __init__(self):
+    def __init__(self, 
+                 data_dir = '../../Dataset/criteo/',        # 原始数据所在目录的相对路径
+                 data_path='sample.csv',                    # 原始数据明
+                 output_save_dir = '../../Dataset/criteo/', # 数据输出的存放目录
+                 is_number_bucket=False                     # 数值型特征是否分桶
+                 ):
         super(CriteoPreprocess, self).__init__()
         current_dir = os.path.dirname(os.path.abspath(__file__))
-        self.data_dir = os.path.join(current_dir, '../../Dataset/criteo/')  # 通过相对路径存放文件
-        self.data_path = os.path.join(self.data_dir, 'sample.csv')          # 样本路径
+        self.data_dir = os.path.join(current_dir, data_dir)                 # 通过相对路径存放文件
+        self.data_path = os.path.join(self.data_dir, data_path)             # 样本路径
+        self.output_save_dir = os.path.join(current_dir, output_save_dir)   # 数据输出的存放目录
         self.numeric_features = ['I' + str(i) for i in range(1, 14)]        # 数值型特征    
         self.categerical_features = ['C' + str(i) for i in range(1, 27)]    # 列别型特征
-        self.label = 'label'                                                # label列
-        self.numeric_features_dim = [4] * 13                                # 定义每个特征后续的embedding维度
+        self.label = 'label'
+        self.is_numeric_bucket = False                                      # 数值特征是否分桶
+        if self.is_numeric_bucket:
+            self.numeric_features_dim = [4] * 13                            # 定义每个特征后续的embedding维度
+        else:
+            self.numeric_features_dim = [1] * 13
         self.categerical_features_dim = [4] * 26                            # 定义每个特征后续的embedding维度
     
 
@@ -132,33 +143,45 @@ class CriteoPreprocess():
         return feature_map
     
 
-    def get_categorical_features(self, df, categorical_save_dir):
+    def get_categorical_features(self, df, categorical_save_dir, threshold_value=10):
         """
         获取特征型特征的列别，同时获取每个特征的分桶数量
         Args:
             df: 样本数据
             categorical_features: 列别特征列表
             categorical_save_dir: 存放类别的目录
+            threshold_value: 当类别数量超过阈值才算有效类别,低于阈值的全部算others类. Defaults to 10  
         Returns:
             feature_map: 保存每个特征的类别信息
         """
         feature_map = {}
-        for i, feature in enumerate(self.categerical_features):
-            categories = sorted(df[feature].unique())
-            
-            # 保存到文件
+        feature_filter = {}
+        for C_i, feature in enumerate(self.categerical_features):
+            categories_count = df[feature].value_counts()   # 统计出现的类别，以及每一个类别出现的次数
+            filter_count = 0
+
             output_path = os.path.join(categorical_save_dir, f'categorical_{feature}.txt')
             with open(output_path, 'w') as f:
-                for cat_idx, category in enumerate(categories):
-                    f.write(f'{category}\t{cat_idx}\n')
-                f.write(f'others\t{len(categories)}')   # 添加一个"others"类别, 后续出现当前数据集不存在的类别，则归入others
+                idx = 0
+                for i, num in enumerate(categories_count):
+                    if num >= threshold_value:                              # 小于阈值的类别不单独算一类，全部算others类，
+                        f.write(f'{categories_count.index[i]}\t{idx}\n')
+                        idx = idx + 1
+                    else:
+                        filter_count = filter_count + 1
+                f.write(f'others\t{idx}')                                   # 添加一个"others"类别, 后续出现当前数据集不存在的类别或当前数据集中小于阈值的类别，全部归入others
             
-            # 更新特征映射
+            # 更新特征数据
             feature_map[feature] = {
-                "type": "categorical",
-                "vocab_size": len(categories),
-                "feature_dim": self.categerical_features_dim[i]
+                "type": "categorical",                              # 特征类型
+                "vocab_size": idx+1,                                # 有效类别
+                "feature_dim": self.categerical_features_dim[C_i]   # 每个特征的embedding维度
             }
+
+            feature_filter[feature] = f"{feature}:\t类别总数:{filter_count+idx+1},\t过滤类别:{filter_count},\t超过阈值{threshold_value}的类别:{idx+1}"
+
+        for k, v in feature_filter.items():
+            print(v)
 
         return feature_map
     
@@ -168,12 +191,16 @@ class CriteoPreprocess():
         对数值型特征进行分桶，统计类别型特征的所有类别
         Args:
             bucket_dir: 存放特征分桶的路径
+            numeric_threshold_value: 数值特征分组的阈值. Defaults to 56.
+            is_numeric_bucket: 是否对数值型特征进行分桶. Defaults to True，如果为False，则直接log_2(x)
         Others:
             criteo_feature_info: 保存criteo数据集的基本信息
         """
-        numeric_feature_map = self.get_numeric_bucket_threshold(df=df, 
-                                                                bucket_threshold_save_dir=bucket_dir, 
-                                                                threshold_value=numeric_threshold_value)
+        numeric_feature_map = {}
+        if self.is_numeric_bucket:
+            numeric_feature_map = self.get_numeric_bucket_threshold(df=df, 
+                                                                    bucket_threshold_save_dir=bucket_dir, 
+                                                                    threshold_value=numeric_threshold_value)
         categorical_feature_map = self.get_categorical_features(df=df,
                                                                 categorical_save_dir=bucket_dir)
         features_map = {**numeric_feature_map, **categorical_feature_map}    # 合并特征映射
@@ -181,6 +208,7 @@ class CriteoPreprocess():
         # 保存数据集的所有基本信息
         criteo_feature_info = {}
         criteo_feature_info['dataset_name'] = 'criteo'
+        criteo_feature_info['is_numeric_bucket'] = self.is_numeric_bucket
         criteo_feature_info['numeric_feature'] = self.numeric_features
         criteo_feature_info['categorical_feature'] = self.categerical_features
         criteo_feature_info['label'] = self.label
@@ -189,15 +217,15 @@ class CriteoPreprocess():
         criteo_feature_info['sample_len'] = sum(self.numeric_features_dim) + sum(self.categerical_features_dim) # 每条样本经过embedding之后的长度
         criteo_feature_info['features_map'] = features_map
  
-        # 保存特征映射到JSON文件
+        # 保存feature_map
         feature_map_output_path = os.path.join(self.data_dir, 'feature_map.json')
         with open(feature_map_output_path, 'w') as f:
             json.dump(criteo_feature_info, f, indent=4)
 
+
     def original_data_to_bucket(self, df, bucket_dir, output_npz, output_csv):
         """
         将原始数据根据numeric型特征分桶映射为桶序，将类别型特征按类别映射为类别序号
-
         Args:
             df: 原始样本
             bucket_dir: 特征分桶的目录
@@ -225,6 +253,11 @@ class CriteoPreprocess():
                 if (a < value <= b) or (a == b and value == b):
                     return y
             return buckets[-1][2]
+        
+        def norm_numeric(value):
+            if value > 2:
+                return np.floor(math.log(value, 2))
+            return 1
 
         def map_categorical(value, buckets):
             for cate_str, y in buckets[:-1]:
@@ -237,8 +270,11 @@ class CriteoPreprocess():
         # 处理 numeric features
         for i in range(1, 14):
             feature_name = f'I{i}'
-            buckets = load_bucket_info(bucket_dir, f'numeric_{feature_name}', True)
-            processed_data[feature_name] = df[feature_name].apply(lambda x: map_numeric(x, buckets))
+            if self.is_numeric_bucket:
+                buckets = load_bucket_info(bucket_dir, f'numeric_{feature_name}', True)
+                processed_data[feature_name] = df[feature_name].apply(lambda x: map_numeric(x, buckets))
+            else:
+                processed_data[feature_name] = df[feature_name].apply(lambda x: norm_numeric(x))
 
         # 处理 categorical features
         for i in range(1, 27): 
@@ -256,16 +292,16 @@ class CriteoPreprocess():
         Args:
             dataset_save_name: 数据集处理后的最终命名
         """
-        print("Step1: 开始读取数据，并进行控制填充...")
+        print("Step1: 开始读取数据，并进行空值填充...")
         raw_data = self.get_data_and_null_fill()
 
         print("Step2: 开始进行分桶处理...")
-        bucket_dir = self.data_dir + 'bucket'
+        bucket_dir = self.output_save_dir + 'bucket'
         self.get_all_features_buckets(df=raw_data, bucket_dir=bucket_dir, numeric_threshold_value=56)
         
         print("Step3: 将原始样本值按桶/类别映射为桶序/类别序号...")
-        process_sample_path = self.data_dir + dataset_save_name
-        process_sample_head_100_path = self.data_dir + "process_sample_head_100.csv"     # 将前100行数据保存为csv，方便查看
+        process_sample_path = self.output_save_dir + dataset_save_name
+        process_sample_head_100_path = self.output_save_dir + "process_sample_head_100.csv"     # 将前100行数据保存为csv，方便查看
         self.original_data_to_bucket(df=raw_data, 
                                      bucket_dir=bucket_dir, 
                                      output_npz=process_sample_path, 
@@ -274,5 +310,11 @@ class CriteoPreprocess():
 
 
 if __name__ == '__main__':
-    preprocess = CriteoPreprocess()
-    preprocess.process_all_operation()
+    preprocess = CriteoPreprocess(
+        data_dir = '../../Dataset/criteo/',      # 原始数据所在目录的相对路径
+        data_path='sample.csv',                       # 原始数据明
+        output_save_dir = '../../Dataset/criteo/'   # 数据输出的存放目录
+    )                 
+    preprocess.process_all_operation(
+        dataset_save_name="process_sample.npz"                # 数据处理后的文件名
+    )

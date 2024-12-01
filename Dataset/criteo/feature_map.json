@@ -1,5 +1,6 @@
 {
     "dataset_name": "criteo",
+    "is_numeric_bucket": false,
     "numeric_feature": [
         "I1",
         "I2",
@@ -44,113 +45,48 @@
         "C26"
     ],
     "label": "label",
-    "numeric_feature_len": 52,
+    "numeric_feature_len": 13,
     "categorical_feature_len": 104,
-    "sample_len": 156,
+    "sample_len": 117,
     "features_map": {
-        "I1": {
-            "type": "numeric",
-            "vocab_size": 46,
-            "feature_dim": 4
-        },
-        "I2": {
-            "type": "numeric",
-            "vocab_size": 73,
-            "feature_dim": 4
-        },
-        "I3": {
-            "type": "numeric",
-            "vocab_size": 67,
-            "feature_dim": 4
-        },
-        "I4": {
-            "type": "numeric",
-            "vocab_size": 45,
-            "feature_dim": 4
-        },
-        "I5": {
-            "type": "numeric",
-            "vocab_size": 168,
-            "feature_dim": 4
-        },
-        "I6": {
-            "type": "numeric",
-            "vocab_size": 128,
-            "feature_dim": 4
-        },
-        "I7": {
-            "type": "numeric",
-            "vocab_size": 46,
-            "feature_dim": 4
-        },
-        "I8": {
-            "type": "numeric",
-            "vocab_size": 52,
-            "feature_dim": 4
-        },
-        "I9": {
-            "type": "numeric",
-            "vocab_size": 121,
-            "feature_dim": 4
-        },
-        "I10": {
-            "type": "numeric",
-            "vocab_size": 21,
-            "feature_dim": 4
-        },
-        "I11": {
-            "type": "numeric",
-            "vocab_size": 21,
-            "feature_dim": 4
-        },
-        "I12": {
-            "type": "numeric",
-            "vocab_size": 49,
-            "feature_dim": 4
-        },
-        "I13": {
-            "type": "numeric",
-            "vocab_size": 51,
-            "feature_dim": 4
-        },
         "C1": {
             "type": "categorical",
-            "vocab_size": 175,
+            "vocab_size": 31,
             "feature_dim": 4
         },
         "C2": {
             "type": "categorical",
-            "vocab_size": 386,
+            "vocab_size": 145,
             "feature_dim": 4
         },
         "C3": {
             "type": "categorical",
-            "vocab_size": 5520,
+            "vocab_size": 60,
             "feature_dim": 4
         },
         "C4": {
             "type": "categorical",
-            "vocab_size": 4032,
+            "vocab_size": 90,
             "feature_dim": 4
         },
         "C5": {
             "type": "categorical",
-            "vocab_size": 56,
+            "vocab_size": 17,
             "feature_dim": 4
         },
         "C6": {
             "type": "categorical",
-            "vocab_size": 7,
+            "vocab_size": 8,
             "feature_dim": 4
         },
         "C7": {
             "type": "categorical",
-            "vocab_size": 3184,
+            "vocab_size": 173,
             "feature_dim": 4
         },
         "C8": {
             "type": "categorical",
-            "vocab_size": 93,
+            "vocab_size": 24,
             "feature_dim": 4
         },
         "C9": {
@@ -160,87 +96,87 @@
         },
         "C10": {
             "type": "categorical",
-            "vocab_size": 2986,
+            "vocab_size": 102,
             "feature_dim": 4
         },
         "C11": {
             "type": "categorical",
-            "vocab_size": 2084,
+            "vocab_size": 224,
             "feature_dim": 4
         },
         "C12": {
             "type": "categorical",
-            "vocab_size": 5283,
+            "vocab_size": 64,
             "feature_dim": 4
         },
         "C13": {
             "type": "categorical",
-            "vocab_size": 1725,
+            "vocab_size": 231,
             "feature_dim": 4
         },
         "C14": {
             "type": "categorical",
-            "vocab_size": 24,
+            "vocab_size": 14,
             "feature_dim": 4
         },
         "C15": {
             "type": "categorical",
-            "vocab_size": 2035,
+            "vocab_size": 217,
             "feature_dim": 4
         },
         "C16": {
             "type": "categorical",
-            "vocab_size": 4723,
+            "vocab_size": 89,
             "feature_dim": 4
         },
         "C17": {
             "type": "categorical",
-            "vocab_size": 9,
+            "vocab_size": 10,
             "feature_dim": 4
         },
         "C18": {
             "type": "categorical",
-            "vocab_size": 1149,
+            "vocab_size": 191,
             "feature_dim": 4
         },
         "C19": {
             "type": "categorical",
-            "vocab_size": 546,
+            "vocab_size": 140,
             "feature_dim": 4
         },
         "C20": {
             "type": "categorical",
-            "vocab_size": 3,
+            "vocab_size": 4,
             "feature_dim": 4
         },
         "C21": {
             "type": "categorical",
-            "vocab_size": 5036,
+            "vocab_size": 76,
             "feature_dim": 4
         },
         "C22": {
             "type": "categorical",
-            "vocab_size": 7,
+            "vocab_size": 6,
             "feature_dim": 4
         },
         "C23": {
             "type": "categorical",
-            "vocab_size": 12,
+            "vocab_size": 13,
             "feature_dim": 4
         },
         "C24": {
             "type": "categorical",
-            "vocab_size": 2524,
+            "vocab_size": 92,
             "feature_dim": 4
         },
         "C25": {
             "type": "categorical",
-            "vocab_size": 39,
+            "vocab_size": 36,
             "feature_dim": 4
         },
         "C26": {
             "type": "categorical",
-            "vocab_size": 1938,
+            "vocab_size": 267,
             "feature_dim": 4
         }
     }

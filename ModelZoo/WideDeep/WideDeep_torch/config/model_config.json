@@ -6,6 +6,6 @@
     "loss": "bce",
     "optimizer": "adam",
     "learning_rate": 0.001,
-    "hidden_layers": [156, 128, 64, 32, 1],
+    "hidden_layers": [128, 64, 32],
     "dropout_p": 0.0
 }

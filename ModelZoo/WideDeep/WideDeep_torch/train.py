@@ -55,7 +55,7 @@ def trian_and_valid(data_config, feature_map, model_config, model_save_dir):
     
 
     model = WideDeep(feature_map=feature_map,
-                     model_config=model_config)
+                     model_config=model_config).to(device)
 
     if model_config['loss'] == 'bce':
         criterion = nn.BCELoss()
