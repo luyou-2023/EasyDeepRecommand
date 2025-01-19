@@ -1,7 +1,7 @@
 ![alt text](ResyDeepRecommand_logo.png)
 
 <div align="center">
-< img src="https://github.com/Iamctb/EasyDeepRecommand/ResyDeepRecommand_logo.png" alt="Logo" width="260"/>
+< img src="https://github.com/Iamctb/EasyDeepRecommand/blob/main/ResyDeepRecommand_logo.png" alt="Logo" width="260"/>
 </div>
 
 <div align="center">
