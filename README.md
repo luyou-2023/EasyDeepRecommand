@@ -29,7 +29,7 @@
 
 | Name   | Preprocess_url                                               | Download                                                     | Progress |
 | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- |
-| Criteo | [criteo_preprocess.py](https://github.com/Iamctb/EasyDeepRecommand/blob/main/DataProcess/criteo/criteo_preprocess.py): 预处理源代码 | [Download_URL](https://github.com/reczoo/Datasets/tree/main/Criteo) | Done     |
+| Criteo | [criteo_preprocess.py](https://github.com/Iamctb/EasyDeepRecommand/blob/main/DataProcess/criteo/criteo_preprocess.py): 预处理源代码 | [Download_URL](https://github.com/reczoo/Datasets/tree/main/Criteo) | ✅ |
 |        | [预处理说明](https://github.com/Iamctb/EasyDeepRecommand/blob/main/DataProcess/criteo/readme_about_criteo_preprocess.md) |                                                              |          |
 
 
@@ -38,8 +38,8 @@
 
 | No.  | Publication | Model    | Blog                                                         | Paper                                                        | Version |
 | ---- | ----------- | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------- |
-| 1    | DLRS'16     | WideDeep | [白话WideDeep](https://blog.csdn.net/qq_41915623/article/details/138839827?fromshare=blogdetail&sharetype=blogdetail&sharerId=138839827&sharerefer=PC&sharesource=qq_41915623&sharefrom=from_link) | [Wide & Deep Learning for Recommender Systems](https://arxiv.org/pdf/1606.07792.pdf), **Google** | torch   |
-| 2    | ADKDD'17    | DCN      |                                                              | [Deep & Cross Network for Ad Click Predictions](https://arxiv.org/abs/1708.05123), **Google** | torch   |
+| 1    | DLRS'16     | WideDeep | [白话WideDeep](https://blog.csdn.net/qq_41915623/article/details/138839827?fromshare=blogdetail&sharetype=blogdetail&sharerId=138839827&sharerefer=PC&sharesource=qq_41915623&sharefrom=from_link) | [📄 Wide & Deep Learning for Recommender Systems](https://arxiv.org/pdf/1606.07792.pdf), **Google** | ✅ torch   |
+| 2    | ADKDD'17    | DCN      |                                                              | [📄 Deep & Cross Network for Ad Click Predictions](https://arxiv.org/abs/1708.05123), **Google** | ✅ torch   |
 
 
 
