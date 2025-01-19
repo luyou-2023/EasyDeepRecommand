@@ -1,17 +1,22 @@
 
 
 <div align="center">
-<a href=" ">< img src="https://img.shields.io/badge/python-3.8%2B-blue" style="max-width: 100%;" alt="python version"></a >
-<a href="https://pytorch.org/">< img src="https://img.shields.io/badge/pytorch-1.13%2B-blue" style="max-width: 100%;" alt="pytorch version"></a >
-<a href="https://www.tensorflow.org/?hl=zh-cn">< img src="https://img.shields.io/badge/tensorflow-2.1+-blue" style="max-width: 100%;" alt="tensorflow version"></a >
-<a href="https://blog.csdn.net/qq_41915623/article/details/138839827?fromshare=blogdetail&sharetype=blogdetail&sharerId=138839827&sharerefer=PC&sharesource=qq_41915623&sharefrom=from_link">< img src="https://img.shields.io/badge/CSDN-Blog-red" style="max-width: 100%;" alt="Downloads"></a >
-<a href="https://juejin.cn/post/7424903278063140898">< img src="https://img.shields.io/badge/JueJin-Blog-red" style="max-width: 100%;" alt="Downloads"></a >
-<a href="https://www.apache.org/licenses/LICENSE-2.0.html">< img src="https://img.shields.io/badge/lisence-Apache_2.0-green" style="max-width: 100%;" alt="License"></a >
+<a href="https://www.python.org/"><img src="https://img.shields.io/badge/python-3.8%2B-blue" style="max-width: 100%;" alt="python version"></a >
+
+<a href="https://pytorch.org/"><img src="https://img.shields.io/badge/pytorch-1.13%2B-blue" style="max-width: 100%;" alt="pytorch version"></a >
+
+<a href="https://www.tensorflow.org/?hl=zh-cn"><img src="https://img.shields.io/badge/tensorflow-2.1+-blue" style="max-width: 100%;" alt="tensorflow version"></a >
+
+<a href="https://blog.csdn.net/qq_41915623/article/details/138839827?fromshare=blogdetail&sharetype=blogdetail&sharerId=138839827&sharerefer=PC&sharesource=qq_41915623&sharefrom=from_link"><img src="https://img.shields.io/badge/CSDN-Blog-red" style="max-width: 100%;" alt="Downloads"></a >
+
+<a href="https://juejin.cn/post/7424903278063140898"><img src="https://img.shields.io/badge/JueJin-Blog-red" style="max-width: 100%;" alt="Downloads"></a >
+
+<a href="https://www.apache.org/licenses/LICENSE-2.0.html"><img src="https://img.shields.io/badge/lisence-Apache_2.0-green" style="max-width: 100%;" alt="License"></a >
 </div>
 <hr/>
 
 <div align="center">
-<a href="https://github.com/Iamctb/EasyDeepRecommand/stargazers">< img src="http://bytecrank.com/nastyox/reporoster/php/stargazersSVG.php?user=Iamctb&repo=EasyDeepRecommand" width="600"/><a/>
+<a href="https://github.com/Iamctb/EasyDeepRecommand/stargazers"><img src="http://bytecrank.com/nastyox/reporoster/php/stargazersSVG.php?user=Iamctb&repo=EasyDeepRecommand" width="600"/><a/>
 </div>
 
 # **EasyDeepRecommand**
