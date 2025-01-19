@@ -16,11 +16,12 @@
 <a href="https://github.com/Iamctb/EasyDeepRecommand/stargazers"><img src="http://bytecrank.com/nastyox/reporoster/php/stargazersSVG.php?user=Iamctb&repo=EasyDeepRecommand" width="600"/><a/>
 </div>
 
-# **EasyDeepRecommand**
 
 一个通俗易懂的开源推荐系统（A user-friendly open-source project for recommendation systems）.
 
-本项目将使用结合：**代码、数据流转图、博客、模型发展史** 等多个方面通俗易懂地讲解经典推荐模型，让读者通过一个项目了解推荐系统概况！
+本项目将结合：**代码、数据流转图、博客、模型发展史** 等多个方面通俗易懂地讲解经典推荐模型，让读者通过一个项目了解推荐系统概况！
+
+持续更新中，欢迎star🌟,第一时间获取更新!!!
 
 
 
