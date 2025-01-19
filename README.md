@@ -1,10 +1,6 @@
 ![alt text](ResyDeepRecommand_logo.png)
 
 <div align="center">
-< img src="https://github.com/Iamctb/EasyDeepRecommand/blob/main/ResyDeepRecommand_logo.png" alt="Logo" width="260"/>
-</div>
-
-<div align="center">
 <a href=" ">< img src="https://img.shields.io/badge/python-3.8%2B-blue" style="max-width: 100%;" alt="python version"></a >
 <a href="https://pytorch.org/">< img src="https://img.shields.io/badge/pytorch-1.13%2B-blue" style="max-width: 100%;" alt="pytorch version"></a >
 <a href="https://www.tensorflow.org/?hl=zh-cn">< img src="https://img.shields.io/badge/tensorflow-2.1+-blue" style="max-width: 100%;" alt="tensorflow version"></a >
