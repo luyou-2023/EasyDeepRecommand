@@ -1,5 +1,5 @@
 <div align="center">
-<img src="https://github.com/Iamctb/EasyDeepRecommand/blob/main/ResyDeepRecommand_logo.png" alt="Logo" width="260"/>
+<img src="https://github.com/Iamctb/EasyDeepRecommand/blob/main/ResyDeepRecommand_logo.png" alt="Logo" width="360"/>
 </div>
 
 <div align="center">
@@ -21,7 +21,7 @@
 
 本项目将结合：**代码、数据流转图、博客、模型发展史** 等多个方面通俗易懂地讲解经典推荐模型，让读者通过一个项目了解推荐系统概况！
 
-持续更新中，欢迎star🌟,第一时间获取更新!!!
+持续更新中..., 欢迎star🌟, 第一时间获取更新!!!
 
 
 
