@@ -1,4 +1,6 @@
-![alt text](ResyDeepRecommand_logo.png)
+<div align="center">
+<img src="https://github.com/Iamctb/EasyDeepRecommand/blob/main/ResyDeepRecommand_logo.png" alt="Logo" width="260"/>
+</div>
 
 <div align="center">
 <a href="https://www.python.org/"><img src="https://img.shields.io/badge/python-3.8%2B-blue" style="max-width: 100%;" alt="python version"></a >
