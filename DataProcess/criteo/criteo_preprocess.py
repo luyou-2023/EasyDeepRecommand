@@ -9,6 +9,7 @@ from sklearn.preprocessing import OrdinalEncoder
 import json
 import numpy as np
 import math
+import time
 
 class CriteoPreprocess():
     def __init__(self, 
@@ -293,19 +294,26 @@ class CriteoPreprocess():
             dataset_save_name: 数据集处理后的最终命名
         """
         print("Step1: 开始读取数据，并进行空值填充...")
+        start1_time = time.time()
         raw_data = self.get_data_and_null_fill()
+        print(f"Step1 cost time: {time.time() - start1_time} s")
 
         print("Step2: 开始进行分桶处理...")
+        start2_time = time.time()
         bucket_dir = self.output_save_dir + 'bucket'
         self.get_all_features_buckets(df=raw_data, bucket_dir=bucket_dir, numeric_threshold_value=56)
+        print(f"Step2 cost time: {time.time() - start2_time} s")
         
         print("Step3: 将原始样本值按桶/类别映射为桶序/类别序号...")
+        start3_time = time.time()
         process_sample_path = self.output_save_dir + dataset_save_name
         process_sample_head_100_path = self.output_save_dir + "process_sample_head_100.csv"     # 将前100行数据保存为csv，方便查看
         self.original_data_to_bucket(df=raw_data, 
                                      bucket_dir=bucket_dir, 
                                      output_npz=process_sample_path, 
                                      output_csv=process_sample_head_100_path)
+        print(f"Step3 cost time: {time.time() - start3_time} s")
+        print(f"all cost time: {time.time() - start1_time} s")
 
 
 

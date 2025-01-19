@@ -92,6 +92,9 @@ def trian_and_valid(data_config, feature_map, model_config, model_save_dir):
                 # 更新进度条
                 pbar.set_postfix(loss=loss.item())
 
+                # 清理缓存
+                torch.cuda.empty_cache()
+
         # 计算训练集AUC
         train_auc = roc_auc_score(train_labels, train_preds)
         

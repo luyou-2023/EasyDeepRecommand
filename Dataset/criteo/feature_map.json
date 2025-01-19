@@ -61,12 +61,12 @@
         },
         "C3": {
             "type": "categorical",
-            "vocab_size": 60,
+            "vocab_size": 59,
             "feature_dim": 4
         },
         "C4": {
             "type": "categorical",
-            "vocab_size": 90,
+            "vocab_size": 91,
             "feature_dim": 4
         },
         "C5": {
@@ -76,7 +76,7 @@
         },
         "C6": {
             "type": "categorical",
-            "vocab_size": 8,
+            "vocab_size": 7,
             "feature_dim": 4
         },
         "C7": {
@@ -106,7 +106,7 @@
         },
         "C12": {
             "type": "categorical",
-            "vocab_size": 64,
+            "vocab_size": 65,
             "feature_dim": 4
         },
         "C13": {
@@ -126,7 +126,7 @@
         },
         "C16": {
             "type": "categorical",
-            "vocab_size": 89,
+            "vocab_size": 87,
             "feature_dim": 4
         },
         "C17": {
@@ -141,7 +141,7 @@
         },
         "C19": {
             "type": "categorical",
-            "vocab_size": 140,
+            "vocab_size": 80,
             "feature_dim": 4
         },
         "C20": {
@@ -151,7 +151,7 @@
         },
         "C21": {
             "type": "categorical",
-            "vocab_size": 76,
+            "vocab_size": 74,
             "feature_dim": 4
         },
         "C22": {
@@ -166,17 +166,17 @@
         },
         "C24": {
             "type": "categorical",
-            "vocab_size": 92,
+            "vocab_size": 97,
             "feature_dim": 4
         },
         "C25": {
             "type": "categorical",
-            "vocab_size": 36,
+            "vocab_size": 29,
             "feature_dim": 4
         },
         "C26": {
             "type": "categorical",
-            "vocab_size": 267,
+            "vocab_size": 137,
             "feature_dim": 4
         }
     }

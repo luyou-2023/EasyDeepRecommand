@@ -92,6 +92,9 @@ def trian_and_valid(data_config, feature_map, model_config, model_save_dir):
 
                 # 更新进度条
                 pbar.set_postfix(loss=loss.item())
+                
+                # 清理缓存
+                torch.cuda.empty_cache()
 
         # 计算训练集AUC
         train_auc = roc_auc_score(train_labels, train_preds)
@@ -146,7 +149,7 @@ def trian_and_valid(data_config, feature_map, model_config, model_save_dir):
 
 if __name__ == '__main__':
     set_seed(2024)                                                              # 固定随机种子，用于代码复现
-    
+
     print("Step1: 获取配置各项配置 ...")
     data_config_path = os.path.join(current_dir, "config/data_config.json")     # 通过相对路径获取数据配置文件
     model_config_path = os.path.join(current_dir, "config/model_config.json")   # 通过相对路径获取模型配置文件
