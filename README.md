@@ -1,4 +1,4 @@
-![alt text](ResyDeepRecommand_logo.png)
+
 
 <div align="center">
 <a href=" ">< img src="https://img.shields.io/badge/python-3.8%2B-blue" style="max-width: 100%;" alt="python version"></a >
