@@ -29,9 +29,19 @@
 
 **2️⃣**  通过blog详细解释模型/论文
 
-**3️⃣**  提供模型间的关系递进图：介绍模型前后的因果关系
+**3️⃣**  提供模型发展图：介绍模型的优缺点，解决了什么问题，以及前后因果关系
 
 **4️⃣** 提供详细的代码注释，并包含详细的数据处理模块
+
+
+## Development of model
+<div align="center">
+<img src="https://github.com/Iamctb/EasyDeepRecommand/blob/main/Development_of_model.png" alt="Logo" />
+</div>
+(图片展示有水印，望理解，后期会使用markdown语法编辑！)
+
+和很多朋友交流发现，我们在读很多论文时，都聚焦于论文中提出的模型本身，而没有关心模型间的因果关系，所以这个 **板块用来介绍模型优缺点和模型间的前后因果关系。**
+由于很多论文中都没有显式介绍自己模型的优缺点和前因后果，所以很多观点都是本人结合网上资料加上个人理解作出的，如果有不对的地方，欢迎在issue中交流讨论。
 
 
 ## Dataset
@@ -48,7 +58,7 @@
 | No.  | Publication | Model    | Blog                                                         | Paper                                                        | Version |
 | ---- | ----------- | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------- |
 | 1    | DLRS'16     | WideDeep | [📝WideDeep](https://blog.csdn.net/qq_41915623/article/details/138839827?fromshare=blogdetail&sharetype=blogdetail&sharerId=138839827&sharerefer=PC&sharesource=qq_41915623&sharefrom=from_link) | [Wide & Deep Learning for Recommender Systems](https://arxiv.org/pdf/1606.07792.pdf), **Google** | ✅ torch   |
-| 2    | ADKDD'17    | DCN      |                                                              | [Deep & Cross Network for Ad Click Predictions](https://arxiv.org/abs/1708.05123), **Google** | ✅ torch   |
+| 2    | ADKDD'17    | DCN      | [DCN](https://blog.csdn.net/qq_41915623/article/details/145951277?fromshare=blogdetail&sharetype=blogdetail&sharerId=145951277&sharerefer=PC&sharesource=qq_41915623&sharefrom=from_link)                                                             | [Deep & Cross Network for Ad Click Predictions](https://arxiv.org/abs/1708.05123), **Google** | ✅ torch   |
 
 
 
@@ -94,5 +104,7 @@ python train.py
 ```
 
 ## 最后
+开源项目的一个很大特点就是：**共创！**
+欢迎各位在issue中交流讨论。
 如果你觉得还不错的话，请帮忙点个star🌟吧，感谢感谢！！！
 If you think it's good, please help out with a star🌟, thank you !!!
